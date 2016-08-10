@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="BeerApp">
+    <head>
+    	<title><%= pageTitle %></title>
+    	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+    	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
+        <script src="/js/dashboard.js"></script>
+    </head>
+    <body class="container">
+        <section class="jumbotron">
+            <% if ( sectionTitle.length > 20 ) { %>
+                <h1><%= sectionTitle %></h1>
+            <% } %>
+        </section>
+        <section ng-controller="BeerController as Beer">
+            <form class="form-inline" ng-submit="Beer.submitBeer()">
+                <div class="form-group">
+                    <fieldset class="input-group">
+                        <!-- name="name" ==> req.body.name -->
+                        <input ng-model="Beer.newBeer.name" class="form-control" type="text" name="name" placeholder="Name">
+                    </fieldset>
+                    <fieldset class="input-group">
+                        <!-- <div class="input-group-addon">$</div> -->
+                        <input ng-model="Beer.newBeer.price" class="form-control" type="number" name="price" placeholder="Price"/>
+                    </fieldset>
+                    <fieldset class="input-group">
+                        <!-- <div class="input-group-addon">kCal</div> -->
+                        <input ng-model="Beer.newBeer.calories" class="form-control" type="number" name="calories" placeholder="Calories"/>
+                    </fieldset>
+                    <fieldset class="input-group">
+                        <!-- <div class="input-group-addon">IBUs</div> -->
+                        <input ng-model="Beer.newBeer.IBUs" class="form-control" type="number" name="IBUs" placeholder="Hoppiness"/>
+                    </fieldset>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </form>
+        </section>
+    </body>
+</html>
